@@ -5,9 +5,9 @@ import Product from "@/components/Product";
 import RelatedItems from "@/components/RelatedItems";
 
 // This component will automatically receive the dynamic `id` parameter
-export default function ProductPage({ params }: { params: { id: string } }) {
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   // You can directly access the `id` from the `params` object
-  const { id } = params;
+  const { id } = (await params);
   interface Item {
     id: string;
     itemName: string;
